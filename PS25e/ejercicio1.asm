@@ -1,0 +1,47 @@
+TITLE CAMBIOCADENA
+;@Author : Ricardo Andres Rivera Montoya
+;@Country: El Salvador, Centro America
+;@eMail  : 2931322018@mail.utec.edu.sv
+INCLUDE Irvine32.inc
+
+.DATA
+CAD1 BYTE "3st3 dia s3ra m3jor qu3 ay3r", 0
+MSG1 BYTE "CAMBIO REALIZADO", 0
+MSG2 BYTE "CAMBIAR 3 POR E", 0
+
+.CODE
+MR PROC
+
+MOV EDX, OFFSET CAD1
+CALL WriteString
+CALL Crlf
+
+MOV EDX, OFFSET MSG2
+CALL WriteString
+CALL Crlf
+CALL Crlf
+
+MOV ESI, OFFSET CAD1
+MOV AL, BYTE PTR "e"
+MOV DL, BYTE PTR "3"
+
+MOV ECX, LENGTHOF CAD1
+
+CAMBIAR:
+    MOV AH, BYTE PTR [ESI]
+    .IF (AH == DL)
+        MOV [ESI], BYTE PTR AL
+    .ENDIF
+
+    INC ESI
+    LOOP CAMBIAR
+
+MOV EDX, OFFSET MSG1
+CALL WriteString
+CALL Crlf
+MOV EDX, OFFSET CAD1
+CALL WriteString
+
+EXIT
+MR ENDP
+END MR

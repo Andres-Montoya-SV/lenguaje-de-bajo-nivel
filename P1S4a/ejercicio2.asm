@@ -1,0 +1,37 @@
+TITLE INICIAR
+INCLUDE IRVINE32.INC
+;@Author : Ricardo Andres Rivera Montoya
+;@Country: El Salvador, Centro America
+;@eMail  : 2931322018@mail.utec.edu.sv
+.DATA
+   VB1 BYTE 125
+   VB2 BYTE 200
+   VW WORD 1234
+   VD DWORD 2587
+   M1 BYTE "la suma es : ",0
+ 
+.CODE
+INICIAR PROC
+   MOV EAX,0
+   MOV EBX,0
+   MOV ECX,0
+   MOV EDX,0
+   MOV AL,VB1
+   MOV BL,VB2
+   CALL DUMPREGS
+ 
+   ADD AX,BX
+   CALL DUMPREGS
+   ADD AX,VW
+   CALL DUMPREGS
+   ADD EAX,VD
+   CALL DUMPREGS
+   CALL CRLF
+ 
+   MOV EDX,OFFSET M1
+   CALL WRITESTRING
+   CALL WRITEDEC
+   CALL CRLF
+   EXIT
+INICIAR ENDP
+  END INICIAR

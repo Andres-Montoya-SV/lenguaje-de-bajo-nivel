@@ -1,0 +1,22 @@
+TITLE SUMAR TRES NUMEROS DIFERENTES
+INCLUDE IRVINE32.INC
+;@Author : Ricardo Andres Rivera Montoya
+;@Country: El Salvador, Centro America
+;@eMail  : 2931322018@mail.utec.edu.sv
+.DATA
+   NB BYTE 124
+   NW WORD 3256
+   ND DWORD 10000
+.CODE
+N3D PROC
+   MOV EAX,0
+   MOV AL, NB
+   MOV BX,NW
+   ADD AX,BX
+   MOV EBX,ND
+   ADD EAX,EBX
+   CALL CRLF
+   CALL WRITEDEC
+   EXIT
+N3D ENDP
+   END N3D

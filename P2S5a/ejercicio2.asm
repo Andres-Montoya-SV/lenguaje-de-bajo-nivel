@@ -1,0 +1,34 @@
+TITLE MAYOR
+
+;@Author : Ricardo Andres Rivera Montoya
+;@Country: El Salvador, Centro America
+;@eMail  : 2931322018@mail.utec.edu.sv
+
+INCLUDE IRVINE32.INC
+.DATA
+   PEDIR BYTE "ENTRE UN NUMERO. ",0
+   RES BYTE "EL NUMERO MAS GRADE QUE INGRESÓ FUE. ",0
+   MAY DWORD 0
+.CODE
+MAYOR PROC
+   MOV EDX,OFFSET PEDIR
+   MOV ECX,0
+   .WHILE ( ECX < 5 )
+      CALL WRITESTRING
+      CALL CRLF
+      CALL READDEC
+      .IF ( EAX > MAY )
+         MOV MAY,EAX
+      .ENDIF
+      CALL CRLF
+      INC ECX
+   .ENDW
+ 
+   MOV EDX,OFFSET RES
+   MOV EAX,MAY
+   CALL WRITESTRING
+   CALL WRITEDEC
+   CALL CRLF
+   EXIT
+MAYOR ENDP
+   END MAYOR

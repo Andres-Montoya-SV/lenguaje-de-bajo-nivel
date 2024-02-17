@@ -1,0 +1,22 @@
+TITLE INICIAR
+;@Author : Ricardo Andres Rivera Montoya
+;@Country: El Salvador, Centro America
+;@eMail  : 2931322018@mail.utec.edu.sv
+INCLUDE IRVINE32.INC
+.DATA
+   M1 BYTE "MOSTRAR REGISTROS: ",0
+.CODE
+INICIAR PROC
+   MOV EDX,OFFSET M1
+   CALL WRITESTRING
+   CALL DUMPREGS
+   CALL CRLF
+ 
+   MOV EAX,0
+   MOV EBX,0
+   MOV ECX,0
+   MOV EDX,0
+   CALL DUMPREGS
+   EXIT
+INICIAR ENDP
+   END INICIAR
