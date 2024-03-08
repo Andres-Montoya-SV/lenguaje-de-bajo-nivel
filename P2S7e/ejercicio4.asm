@@ -1,0 +1,28 @@
+TITLE SUMAR
+;@Author : Ricardo Andres Rivera Montoya
+;@Country: El Salvador, Centro America
+;@eMail  : 2931322018@mail.utec.edu.sv
+INCLUDE Irvine32.inc
+.DATA
+   CHAIN1 BYTE "LONGITUD DE UNA CADENA POR MEDIO D $ ",0
+   L=($ - CHAIN1)
+   MSJ BYTE "La longitud de la cadena es: ",0
+ 
+.CODE
+LONCAD PROC
+   MOV EAX,DWORD PTR L
+   MOV EDX,OFFSET MSJ
+   CALL WRITESTRING
+   CALL WRITEDEC
+   CALL CRLF
+   EXIT
+LONCAD ENDP
+MAIN PROC
+   MOV EDX,OFFSET CHAIN1
+   CALL WRITESTRING
+   CALL LONCAD
+   CALL WAITMSG
+   CALL CRLF
+   EXIT
+MAIN ENDP
+END MAIN

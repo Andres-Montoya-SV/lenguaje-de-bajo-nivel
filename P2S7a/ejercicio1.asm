@@ -1,0 +1,33 @@
+TITLE SUMALISTABYTE
+;@Author : Ricardo Andres Rivera Montoya
+;@Country: El Salvador, Centro America
+;@eMail  : 2931322018@mail.utec.edu.sv
+INCLUDE Irvine32.inc
+
+.DATA
+   LISTABYTE BYTE 255,255,255,255,255,255
+   MSJ1 BYTE "la suma de LISTABYTE es : ",0
+ 
+.CODE
+MOVZ PROC
+   MOV EAX,0
+   MOV EBX,0
+   MOV ECX, LENGTHOF LISTABYTE
+   MOV ESI, OFFSET LISTABYTE
+ 
+   A: MOV AL,[ESI]
+      ADD EBX,EAX
+      ADD ESI, TYPE LISTABYTE
+   LOOP A
+ 
+   CALL CRLF
+   XCHG EAX,EBX
+   CALL WRITEDEC
+   CALL CRLF
+   EXIT
+MOVZ ENDP
+MAIN PROC
+   CALL MOVZ
+   EXIT
+MAIN ENDP
+END MAIN
